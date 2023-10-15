@@ -88,6 +88,34 @@
 			"response": []
 		},
 		{
+			"name": "All Orders",
+			"id": "cbf50737-5b1e-452b-aeb2-6e986750cec9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/tools?category=plumbing",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"tools"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "plumbing",
+							"type": "text"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Register API Clent",
 			"id": "5e5f9b24-9b6a-4f23-97e7-37e955a68969",
 			"protocolProfileBehavior": {
