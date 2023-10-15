@@ -38,9 +38,30 @@
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{apiToken}}"
+					}
+				},
 				"method": "GET",
 				"header": [],
-				"url": "{{baseURL}}/tools"
+				"url": {
+					"raw": "{{baseURL}}/orders/:orderId",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"orders",
+						":orderId"
+					],
+					"variable": [
+						{
+							"key": "orderId",
+							"value": "Dlzds18QSWOSemp1mX9wH"
+						}
+					]
+				}
 			},
 			"response": []
 		},
