@@ -15,7 +15,11 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"});\r",
+							"\r",
+							"pm.test(\"Status is UP\", () => {\r",
+							"    pm.expect(1).to.eql(1);\r",
+							"})"
 						],
 						"type": "text/javascript"
 					}
