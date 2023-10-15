@@ -7,6 +7,20 @@
 	"item": [
 		{
 			"name": "Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1034c784-8b8f-439e-a751-d66a4016380e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "44df3db4-cb73-43f2-a846-32e5bf61049e",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
