@@ -40,6 +40,22 @@
 		},
 		{
 			"name": "all Tools",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cfa3b712-10e8-4bd8-8e6c-f2c889bc5cde",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.globals.set(\"toolId\",5499 );"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "68f54f34-020d-4c96-8d52-44f36b5cfe50",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -53,6 +69,20 @@
 		},
 		{
 			"name": "Specifc Tool",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7e5eba1d-48be-4bdf-8a82-07ebb814ca3e",
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "562994e5-39cd-438d-924f-20f28217d58f",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -71,8 +101,7 @@
 					"query": [
 						{
 							"key": "category",
-							"value": "plumbing",
-							"type": "text"
+							"value": "plumbing"
 						}
 					]
 				}
@@ -81,6 +110,20 @@
 		},
 		{
 			"name": "Tools Via Catagory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1658acb0-8ad5-4b3c-84b9-cb8c4e13a662",
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "e784eb12-ad72-4065-9117-01d657d7eb3d",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -99,8 +142,7 @@
 					"query": [
 						{
 							"key": "category",
-							"value": "plumbing",
-							"type": "text"
+							"value": "plumbing"
 						}
 					]
 				}
@@ -109,6 +151,20 @@
 		},
 		{
 			"name": "Register API Clent",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5ba62997-1b81-4141-9962-1a41fc3b66e2",
+						"exec": [
+							"pm.test(\"Status code is 201\", () => {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "5e5f9b24-9b6a-4f23-97e7-37e955a68969",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -118,7 +174,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n   \"clientName\": \"Postman\",\r\n   \"clientEmail\": \"arpit1@example.com\"\r\n}",
+					"raw": "{\r\n   \"clientName\": \"Postman\",\r\n   \"clientEmail\": \"arpit1_{{$randomLastName}}@example.com\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -131,6 +187,27 @@
 		},
 		{
 			"name": "Create Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b63ccaa3-987d-409f-a4af-c87218883fd9",
+						"exec": [
+							"pm.test(\"Status code is 201\", () => {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"console.log(pm.collectionVariables.get(\"apiToken\"));\r",
+							"console.log(pm.collectionVariables.get(\"baseURL\"));\r",
+							"console.log(pm.globals.get(\"orderId\"));\r",
+							"\r",
+							"pm.globals.set(\"orderId\",\"DMasaOHi7xd_HCS7_DgVu\" );\r",
+							"//pm.environment.get(\"T\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "a60a24f4-c14f-47cb-ad18-5b70a9df2823",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -172,33 +249,9 @@
 					"script": {
 						"id": "643efeb2-1360-4260-bc3d-23dd3ceaa5f9",
 						"exec": [
-							"var template = `\r",
-							"<style type=\"text/css\">\r",
-							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
-							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
-							"    .tftable tr {background-color:#ffffff;}\r",
-							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
-							"    .tftable tr:hover {background-color:#e0ffff;}\r",
-							"</style>\r",
-							"\r",
-							"<table class=\"tftable\" border=\"1\">\r",
-							"    <tr>\r",
-							"        <th>Created</th>\r",
-							"        <th>Order ID</th>\r",
-							"    </tr>\r",
-							"    \r",
-							"    <tr>\r",
-							"        <td>{{response.created}}</td>\r",
-							"        <td>{{response.orderId}}</td>\r",
-							"    </tr>\r",
-							"</table>\r",
-							"`;\r",
-							"\r",
-							"function constructVisualizerPayload() {\r",
-							"    return { response: pm.response.json() }\r",
-							"}\r",
-							"\r",
-							"pm.visualizer.set(template, constructVisualizerPayload());"
+							"pm.test(\"Status code is 201\", () => {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -239,34 +292,53 @@
 		},
 		{
 			"name": "All Orders",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c384bb42-2565-4287-9ed3-a4f4ff6d542e",
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "cbf50737-5b1e-452b-aeb2-6e986750cec9",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{apiToken}}"
+					}
+				},
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "{{baseURL}}/tools?category=plumbing",
-					"host": [
-						"{{baseURL}}"
-					],
-					"path": [
-						"tools"
-					],
-					"query": [
-						{
-							"key": "category",
-							"value": "plumbing",
-							"type": "text"
-						}
-					]
-				}
+				"url": "{{baseURL}}/orders"
 			},
 			"response": []
 		},
 		{
 			"name": "Specific Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2f287d4b-5ff9-4923-8d71-3b7f83c59409",
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "611966a5-df63-478d-8f38-7648c8cc01bd",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -292,7 +364,7 @@
 					"variable": [
 						{
 							"key": "orderId",
-							"value": "Dlzds18QSWOSemp1mX9wH"
+							"value": "{{orderId}}"
 						}
 					]
 				}
@@ -301,6 +373,20 @@
 		},
 		{
 			"name": "Update Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e614f773-8563-43a4-af67-2fcd400d1d4d",
+						"exec": [
+							"pm.test(\"Status code is 204\", () => {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "80f26269-4b65-4441-b78e-e0419cb9bd30",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -342,7 +428,7 @@
 					"variable": [
 						{
 							"key": "orderId",
-							"value": "Dlzds18QSWOSemp1mX9wH"
+							"value": "sCt6hlv6LR4aMBUiB4b8s"
 						}
 					]
 				}
@@ -351,6 +437,24 @@
 		},
 		{
 			"name": "Delete Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "05bb09a4-df7b-47c4-bd05-d32223b22fa7",
+						"exec": [
+							"pm.test(\"Status code is 204\", () => {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 404\", () => {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "046d57d5-c56e-4a4f-9933-3772ae676afa",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -391,9 +495,8 @@
 					],
 					"variable": [
 						{
-							"id": "3c5f4e01-8a64-4fb3-8493-5b8bfb4cecf7",
 							"key": "orderId",
-							"value": "Dlzds18QSWOSemp1mX9wH"
+							"value": "sCt6hlv6LR4aMBUiB4b8s"
 						}
 					]
 				}
