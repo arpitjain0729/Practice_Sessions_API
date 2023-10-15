@@ -1,0 +1,176 @@
+{
+	"info": {
+		"_postman_id": "d6adeaa5-cd8e-4625-8bd7-28663ea5e636",
+		"name": "Tool Rental API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Status",
+			"id": "44df3db4-cb73-43f2-a846-32e5bf61049e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/status"
+			},
+			"response": []
+		},
+		{
+			"name": "all Tools",
+			"id": "68f54f34-020d-4c96-8d52-44f36b5cfe50",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/tools"
+			},
+			"response": []
+		},
+		{
+			"name": "Tools Via Catagory",
+			"id": "e784eb12-ad72-4065-9117-01d657d7eb3d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/tools?category=plumbing",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"tools"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "plumbing",
+							"type": "text"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Specifc Tool",
+			"id": "562994e5-39cd-438d-924f-20f28217d58f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/tools?category=plumbing",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"tools"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "plumbing",
+							"type": "text"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register API Clent",
+			"id": "5e5f9b24-9b6a-4f23-97e7-37e955a68969",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"clientName\": \"Postman\",\r\n   \"clientEmail\": \"arpit@example.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/api-clients"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Order",
+			"id": "a60a24f4-c14f-47cb-ad18-5b70a9df2823",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{apiToken}}"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "{{apiToken}}",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"clientName\": \"Postman\",\r\n   \"clientEmail\": \"arpit@example.com\"\r\n}"
+				},
+				"url": "{{baseURL}}/orders"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "cd531d9e-03fb-4607-98b1-bfb2527f1327",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "ea393770-736e-4f07-9c04-b994160d7abc",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://simple-tool-rental-api.glitch.me"
+		},
+		{
+			"key": "apiToken",
+			"value": "Go Figure & Fix me",
+			"type": "string"
+		}
+	]
+}
