@@ -220,7 +220,12 @@
 							"console.log(pm.globals.get(\"orderId\"));\r",
 							"\r",
 							"pm.globals.set(\"orderId\",\"DMasaOHi7xd_HCS7_DgVu\" );\r",
-							"//pm.environment.get(\"T\")"
+							"//pm.environment.get(\"T\")\r",
+							"const response = pm.response.json();\r",
+							"console.log(response);\r",
+							"const orderId = response.orderId;\r",
+							"pm.globals.set(\"orderId\" , orderId.orderId);\r",
+							""
 						],
 						"type": "text/javascript"
 					}
