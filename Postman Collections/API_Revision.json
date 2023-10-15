@@ -214,7 +214,7 @@
 						"token": "{{apiToken}}"
 					}
 				},
-				"method": "POST",
+				"method": "PATCH",
 				"header": [
 					{
 						"key": "{{apiToken}}",
@@ -225,7 +225,12 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n   \"clientName\": \"Postman\",\r\n   \"clientEmail\": \"arpit@example.com\"\r\n}"
+					"raw": "{\r\n \"toolId\": 1709,\r\n \"customerName\": \"Mr Goldy\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": "{{baseURL}}/orders"
 			},
