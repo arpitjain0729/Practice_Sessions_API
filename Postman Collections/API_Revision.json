@@ -195,14 +195,19 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n   \"clientName\": \"Postman\",\r\n   \"clientEmail\": \"arpit@example.com\"\r\n}"
+					"raw": "{\r\n \"toolId\": 1709,\r\n \"customerName\": \"Mr Goldy\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": "{{baseURL}}/orders"
 			},
 			"response": []
 		},
 		{
-			"name": "Create Order Copy",
+			"name": "Update Order",
 			"id": "80f26269-4b65-4441-b78e-e0419cb9bd30",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -225,19 +230,123 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n \"toolId\": 1709,\r\n \"customerName\": \"Mr Goldy\" \r\n}",
+					"raw": "{\r\n \"customerName\": \"{{$randomFullName}}\" \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "{{baseURL}}/orders"
+				"url": {
+					"raw": "{{baseURL}}/orders/:orderId",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"orders",
+						":orderId"
+					],
+					"variable": [
+						{
+							"key": "orderId",
+							"value": "Dlzds18QSWOSemp1mX9wH"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Order",
+			"id": "046d57d5-c56e-4a4f-9933-3772ae676afa",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{apiToken}}"
+					}
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "{{apiToken}}",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"customerName\": \"{{$randomFullName}}\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/orders/:orderId",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"orders",
+						":orderId"
+					],
+					"variable": [
+						{
+							"id": "3c5f4e01-8a64-4fb3-8493-5b8bfb4cecf7",
+							"key": "orderId",
+							"value": "Dlzds18QSWOSemp1mX9wH"
+						}
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Create Order Via Random UserName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "643efeb2-1360-4260-bc3d-23dd3ceaa5f9",
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+							"    .tftable tr:hover {background-color:#e0ffff;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>Created</th>\r",
+							"        <th>Order ID</th>\r",
+							"    </tr>\r",
+							"    \r",
+							"    <tr>\r",
+							"        <td>{{response.created}}</td>\r",
+							"        <td>{{response.orderId}}</td>\r",
+							"    </tr>\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return { response: pm.response.json() }\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "0129ac74-ede8-4db7-9ded-bf41f1a3f6bd",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -260,7 +369,12 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n   \"clientName\": \"Postman\",\r\n   \"clientEmail\": \"arpit@example.com\"\r\n}"
+					"raw": "{\r\n \"toolId\": 9482,\r\n \"customerName\": \"{{$randomFullName}}\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": "{{baseURL}}/orders"
 			},
