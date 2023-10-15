@@ -13,12 +13,14 @@
 					"script": {
 						"id": "1034c784-8b8f-439e-a751-d66a4016380e",
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200\", () => {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Status is UP\", () => {\r",
-							"    pm.expect(1).to.eql(1);\r",
+							"    const response = pm.response.json();\r",
+							"    console.log(response.status);\r",
+							"    pm.expect(response.status).to.eql(\"UP\");\r",
 							"})"
 						],
 						"type": "text/javascript"
