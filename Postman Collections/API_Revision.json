@@ -202,6 +202,36 @@
 			"response": []
 		},
 		{
+			"name": "Create Order Copy",
+			"id": "80f26269-4b65-4441-b78e-e0419cb9bd30",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{apiToken}}"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "{{apiToken}}",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"clientName\": \"Postman\",\r\n   \"clientEmail\": \"arpit@example.com\"\r\n}"
+				},
+				"url": "{{baseURL}}/orders"
+			},
+			"response": []
+		},
+		{
 			"name": "Create Order Via Random UserName",
 			"id": "0129ac74-ede8-4db7-9ded-bf41f1a3f6bd",
 			"protocolProfileBehavior": {
