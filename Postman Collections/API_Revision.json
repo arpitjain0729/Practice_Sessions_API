@@ -46,11 +46,14 @@
 					"script": {
 						"id": "cfa3b712-10e8-4bd8-8e6c-f2c889bc5cde",
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 200\", () => {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
-							"pm.globals.set(\"toolId\",5499 );"
+							"//pm.globals.set(\"toolId\",5499 );\r",
+							"const response = pm.response.json();\r",
+							"const tools = response.filter((tools) => tools.inStock === true);\r",
+							"pm.globals.set(\"toolId\", tools[0].id);   "
 						],
 						"type": "text/javascript"
 					}
