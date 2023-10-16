@@ -68,7 +68,7 @@
 							"\r",
 							"pm.test(\"Tool found\" , () =>    {\r",
 							"pm.expect(tool).to.be.an('object');\r",
-							"console.log(tool.catagory);\r",
+							"console.log(tool.category);\r",
 							"pm.expect(tool.catagory).to.eql(pm.collectionVariables.get(\"category\"));\r",
 							"pm.expect(tool.inStock).to.eql(true);\r",
 							"})\r",
@@ -554,7 +554,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "5143fa56-cb31-4838-8aa8-aab14417a1e2",
+				"id": "e25dd4b4-9fc8-4149-8575-90f286a73aa5",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -564,7 +564,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "14bba523-4891-4602-ab32-8076bab1e687",
+				"id": "a02b0d87-3b7b-4f7a-9285-3feb0bebef98",
 				"type": "text/javascript",
 				"exec": [
 					""
