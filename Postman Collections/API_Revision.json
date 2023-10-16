@@ -56,11 +56,13 @@
 							"pm.globals.set(\"toolId\", tools[0].id);   \r",
 							"\r",
 							"\r",
-							"const catagory = response.filter((catagory) => catagory.catagory = \"electric-generators\")\r",
+							"const catagory = response.filter((catagory) => catagory.catagory = \"electric-generators\");\r",
 							"pm.globals.set(\"catagory\", catagory[0].catagory);\r",
+							"const catagory1 = catagory[0];\r",
+							"console.log(catagory1.catagory);\r",
 							"\r",
 							"pm.test(\"tool found\" , () =>{\r",
-							"pm.expect(catagory).to.eql(\"electric-generators\")\r",
+							"pm.expect(catagory1.catagory).to.eql(\"electric-generators\");\r",
 							"})\r",
 							""
 						],
@@ -76,7 +78,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseURL}}/tools?category=electric-generators",
+					"raw": "{{baseURL}}/tools?category={{catagory}}",
 					"host": [
 						"{{baseURL}}"
 					],
@@ -86,13 +88,12 @@
 					"query": [
 						{
 							"key": "category",
-							"value": "power-tools",
-							"disabled": true
+							"value": "{{catagory}}"
 						},
 						{
 							"key": "category",
 							"value": "electric-generators",
-							"type": "text"
+							"disabled": true
 						}
 					]
 				}
@@ -236,9 +237,9 @@
 							"pm.globals.set(\"orderId\",\"DMasaOHi7xd_HCS7_DgVu\" );\r",
 							"//pm.environment.get(\"T\")\r",
 							"const response = pm.response.json();\r",
-							"console.log(response);\r",
-							"const orderId = response.orderId;\r",
-							"pm.globals.set(\"orderId\" , orderId.orderId);\r",
+							"console.log(response.orderId);\r",
+							"//const orderId = response.orderId;\r",
+							"pm.globals.set(\"orderId\" ,response.orderId);\r",
 							""
 						],
 						"type": "text/javascript"
@@ -545,7 +546,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "1ec3a190-66a6-459f-a035-2223955e3c95",
+				"id": "5143fa56-cb31-4838-8aa8-aab14417a1e2",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -555,7 +556,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "aaaeba6a-1656-419e-8cdd-b97fc18c6628",
+				"id": "14bba523-4891-4602-ab32-8076bab1e687",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -571,6 +572,11 @@
 		{
 			"key": "apiToken",
 			"value": "Go Figure & Fix me",
+			"type": "string"
+		},
+		{
+			"key": "category",
+			"value": "electric-generators",
 			"type": "string"
 		}
 	]
