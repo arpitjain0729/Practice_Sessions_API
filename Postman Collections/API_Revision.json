@@ -86,7 +86,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseURL}}/tools?category={{category}}",
+					"raw": "{{baseURL}}/tools?category={{category}}&toolId={{toolId}}",
 					"host": [
 						"{{baseURL}}"
 					],
@@ -102,6 +102,11 @@
 							"key": "category",
 							"value": "electric-generators",
 							"disabled": true
+						},
+						{
+							"key": "toolId",
+							"value": "{{toolId}}",
+							"type": "text"
 						}
 					]
 				}
@@ -132,7 +137,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseURL}}/tools?category=plumbing",
+					"raw": "{{baseURL}}/tools?category={{category}}&toolId={{toolId}}",
 					"host": [
 						"{{baseURL}}"
 					],
@@ -142,7 +147,12 @@
 					"query": [
 						{
 							"key": "category",
-							"value": "plumbing"
+							"value": "{{category}}"
+						},
+						{
+							"key": "toolId",
+							"value": "{{toolId}}",
+							"type": "text"
 						}
 					]
 				}
