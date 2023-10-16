@@ -61,7 +61,7 @@
 							"     pm.globals.set(\"toolId\", tool.id); \r",
 							" }\r",
 							"\r",
-							"const catagory = response.filter((catagory) => catagory.catagory = \"electric-generators\");\r",
+							"//const catagory = response.filter((catagory) => catagory.catagory = \"electric-generators\");\r",
 							"//pm.globals.set(\"catagory\", catagory[0].catagory);\r",
 							"//const catagory1 = catagory[0];\r",
 							"\r",
@@ -69,7 +69,7 @@
 							"pm.test(\"Tool found\" , () =>    {\r",
 							"pm.expect(tool).to.be.an('object');\r",
 							"console.log(tool.catagory);\r",
-							"pm.expect(tool.catagory).to.eql(\"electric-generators\");\r",
+							"pm.expect(tool.catagory).to.eql(pm.collectionVariables.get(\"category\"));\r",
 							"pm.expect(tool.inStock).to.eql(true);\r",
 							"})\r",
 							""
@@ -86,7 +86,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseURL}}/tools?category={{catagory}}",
+					"raw": "{{baseURL}}/tools?category={{category}}",
 					"host": [
 						"{{baseURL}}"
 					],
@@ -96,7 +96,7 @@
 					"query": [
 						{
 							"key": "category",
-							"value": "{{catagory}}"
+							"value": "{{category}}"
 						},
 						{
 							"key": "category",
