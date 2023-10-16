@@ -53,7 +53,16 @@
 							"//pm.globals.set(\"toolId\",5499 );\r",
 							"const response = pm.response.json();\r",
 							"const tools = response.filter((tools) => tools.inStock === true);\r",
-							"pm.globals.set(\"toolId\", tools[0].id);   "
+							"pm.globals.set(\"toolId\", tools[0].id);   \r",
+							"\r",
+							"\r",
+							"const catagory = response.filter((catagory) => catagory.catagory = \"electric-generators\")\r",
+							"pm.globals.set(\"catagory\", catagory[0].catagory);\r",
+							"\r",
+							"pm.test(\"tool found\" , () =>{\r",
+							"pm.expect(catagory).to.eql(\"electric-generators\")\r",
+							"})\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -67,7 +76,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseURL}}/tools?category=power-tools",
+					"raw": "{{baseURL}}/tools?category=electric-generators",
 					"host": [
 						"{{baseURL}}"
 					],
@@ -78,6 +87,11 @@
 						{
 							"key": "category",
 							"value": "power-tools",
+							"disabled": true
+						},
+						{
+							"key": "category",
+							"value": "electric-generators",
 							"type": "text"
 						}
 					]
