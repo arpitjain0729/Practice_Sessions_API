@@ -123,6 +123,12 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", () => {\r",
 							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Tool_id is same in Request and Response\" ,() =>{\r",
+							"const response = pm.response.json();\r",
+							"pm.exepect(response.id).to.eql(pm.globals.get('toolId'));\r",
+							"\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -137,22 +143,24 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseURL}}/tools?category={{category}}&toolId={{toolId}}",
+					"raw": "{{baseURL}}/tools/:toolId?category={{category}}",
 					"host": [
 						"{{baseURL}}"
 					],
 					"path": [
-						"tools"
+						"tools",
+						":toolId"
 					],
 					"query": [
 						{
 							"key": "category",
 							"value": "{{category}}"
-						},
+						}
+					],
+					"variable": [
 						{
 							"key": "toolId",
-							"value": "{{toolId}}",
-							"type": "text"
+							"value": "{{toolId}}"
 						}
 					]
 				}
