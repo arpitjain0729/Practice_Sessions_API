@@ -69,7 +69,7 @@
 							"pm.test(\"Tool found\" , () =>    {\r",
 							"pm.expect(tool).to.be.an('object');\r",
 							"console.log(tool.category);\r",
-							"pm.expect(tool.catagory).to.eql(pm.collectionVariables.get(\"category\"));\r",
+							"pm.expect(tool.catagory).to.eql(pm.collectionVariables.get[\"catagory\"]);\r",
 							"pm.expect(tool.inStock).to.eql(true);\r",
 							"})\r",
 							""
@@ -105,8 +105,7 @@
 						},
 						{
 							"key": "toolId",
-							"value": "{{toolId}}",
-							"type": "text"
+							"value": "{{toolId}}"
 						}
 					]
 				}
@@ -127,8 +126,10 @@
 							"\r",
 							"pm.test(\"Tool_id is same in Request and Response\" ,() =>{\r",
 							"const response = pm.response.json();\r",
-							"pm.exepect(response.id).to.eql(pm.globals.get('toolId'));\r",
-							"\r",
+							"console.log(response);\r",
+							"console.log(pm.globals.get('toolId'));\r",
+							"pm.expect(response.id).to.eql(pm.globals.get('toolId'));\r",
+							"pm.expect(response[\"current-stock\"]).to.be.above(0);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -143,7 +144,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseURL}}/tools/:toolId?category={{category}}",
+					"raw": "{{baseURL}}/tools/:toolId",
 					"host": [
 						"{{baseURL}}"
 					],
@@ -154,7 +155,8 @@
 					"query": [
 						{
 							"key": "category",
-							"value": "{{category}}"
+							"value": "{{category}}",
+							"disabled": true
 						}
 					],
 					"variable": [
@@ -191,7 +193,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseURL}}/tools?category=plumbing",
+					"raw": "{{baseURL}}/tools?category={{category}}",
 					"host": [
 						"{{baseURL}}"
 					],
@@ -201,7 +203,7 @@
 					"query": [
 						{
 							"key": "category",
-							"value": "plumbing"
+							"value": "{{category}}"
 						}
 					]
 				}
@@ -260,7 +262,7 @@
 							"console.log(pm.collectionVariables.get(\"baseURL\"));\r",
 							"console.log(pm.globals.get(\"orderId\"));\r",
 							"\r",
-							"pm.globals.set(\"orderId\",\"DMasaOHi7xd_HCS7_DgVu\" );\r",
+							"pm.globals.set(\"orderId\",pm.response.orderId );\r",
 							"//pm.environment.get(\"T\")\r",
 							"const response = pm.response.json();\r",
 							"console.log(response.orderId);\r",
@@ -294,7 +296,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n \"toolId\": 1709,\r\n \"customerName\": \"Mr Goldy\" \r\n}",
+					"raw": "{\r\n \"toolId\": \"{{toolId}}\",\r\n \"customerName\": \"{{$randomFullName}}\" \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -492,7 +494,7 @@
 					"variable": [
 						{
 							"key": "orderId",
-							"value": "sCt6hlv6LR4aMBUiB4b8s"
+							"value": "{{orderId}}"
 						}
 					]
 				}
@@ -560,7 +562,56 @@
 					"variable": [
 						{
 							"key": "orderId",
-							"value": "sCt6hlv6LR4aMBUiB4b8s"
+							"value": "{{orderId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check if order deleted",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2f287d4b-5ff9-4923-8d71-3b7f83c59409",
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "c8056cf8-f79e-4b08-9245-fd380f03a79d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{apiToken}}"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/orders/:orderId",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"orders",
+						":orderId"
+					],
+					"variable": [
+						{
+							"id": "8e5473b2-a936-4f8d-be56-7a63f9350b44",
+							"key": "orderId",
+							"value": "{{orderId}}"
 						}
 					]
 				}
@@ -572,7 +623,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "e25dd4b4-9fc8-4149-8575-90f286a73aa5",
+				"id": "a41fd70a-1020-49c5-bba0-7654fe66a12a",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -582,7 +633,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "a02b0d87-3b7b-4f7a-9285-3feb0bebef98",
+				"id": "01b85f8f-4f70-4f2d-8295-cad8c3e8d757",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -603,6 +654,11 @@
 		{
 			"key": "category",
 			"value": "electric-generators",
+			"type": "string"
+		},
+		{
+			"key": "toolId",
+			"value": "8554",
 			"type": "string"
 		}
 	]
