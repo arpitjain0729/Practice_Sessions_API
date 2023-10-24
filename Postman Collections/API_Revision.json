@@ -11,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "1034c784-8b8f-439e-a751-d66a4016380e",
+						"id": "9ae63fc3-2674-4c6d-9dcb-e3024da868fb",
 						"exec": [
 							"pm.test(\"Status code is 200\", () => {\r",
 							"    pm.response.to.have.status(200);\r",
@@ -19,7 +19,7 @@
 							"\r",
 							"pm.test(\"Status is UP\", () => {\r",
 							"    const response = pm.response.json();\r",
-							"    console.log(response.status);\r",
+							"    console.log(response);\r",
 							"    pm.expect(response.status).to.eql(\"UP\");\r",
 							"})"
 						],
